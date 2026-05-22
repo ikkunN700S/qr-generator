@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オリジナルQRコード作成ツール</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- qr-code-styling ライブラリの読み込み -->
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>オリジナルQRコード作成</h1>
+        
+        <div class="app-layout">
+            <!-- 左側：設定パネル -->
+            <div class="controls">
+                <div class="control-group">
+                    <label for="qrData">URL または テキスト</label>
+                    <input type="text" id="qrData" value="https://example.com" placeholder="URL・文字を入力してください">
+                </div>
+
+                <div class="control-group row">
+                    <div>
+                        <label for="dotsColor">QRコードの色</label>
+                        <input type="color" id="dotsColor" value="#399ec2">
+                    </div>
+                    <div>
+                        <label for="bgColor">背景の色</label>
+                        <input type="color" id="bgColor" value="#ffffff">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="dotsType">ドットの模様</label>
+                    <select id="dotsType">
+                        <option value="square">スクエア（通常）</option>
+                        <option value="dots">ドット（丸）</option>
+                        <option value="rounded">角丸</option>
+                        <option value="classy">クラッシー</option>
+                        <option value="classy-rounded">クラッシー角丸</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="cornersType">角の枠（目）の模様</label>
+                    <select id="cornersType">
+                        <option value="square">スクエア（通常）</option>
+                        <option value="dot">ドット</option>
+                        <option value="extra-rounded">強めの角丸</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="logoInput">中心のロゴ画像（任意）</label>
+                    <input type="file" id="logoInput" accept="image/*">
+                    <button id="clearLogo" class="secondary-btn">ロゴをクリア</button>
+                </div>
+            </div>
+
+            <!-- 右側：プレビューパネル -->
+            <div class="preview">
+                <div id="qr-code-container"></div>
+                <button id="downloadBtn">画像をダウンロード</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ikkunN700S</p>
+        <p id="site-version"></p>
+        <a href="" target="_blank" rel="noopener noreferrer" class="footer-link">使用方法はこちら</a>
+        <a href="" id="share-link" class="footer-link">ページを共有する</a>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/sharelink.js"></script>
+    <script src="./js/version.js"></script>
+</body>
+</html>
