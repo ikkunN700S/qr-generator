@@ -8,11 +8,11 @@ const qrCode = new QRCodeStyling({
     data: "https://example.com",
     image: "",
     dotsOptions: {
-        color: "#000000",
+        color: "#399ec2",
         type: "square"
     },
     backgroundOptions: {
-        color: "#ffffff",
+        color: "#fff",
     },
     cornersSquareOptions: {
         type: "square"
@@ -28,14 +28,19 @@ qrCode.append(document.getElementById("qr-code-container"));
 
 // QRコードを更新する関数
 function updateQR() {
-    const data = document.getElementById("qrData").value;
+    let data = document.getElementById("qrData").value;
+    data = data || " ";
+
+    // 日本語文字化け防止
+    const utf8Data = unescape(encodeURIComponent(data));
+
     const dotsColor = document.getElementById("dotsColor").value;
     const bgColor = document.getElementById("bgColor").value;
     const dotsType = document.getElementById("dotsType").value;
     const cornersType = document.getElementById("cornersType").value;
 
     qrCode.update({
-        data: data || " ", // 空っぽだとエラーになるためスペースを入れる
+        data: utf8Data,
         image: logoUrl,
         dotsOptions: {
             color: dotsColor,
